@@ -1,0 +1,5 @@
+AllCops:
+  Exclude:
+    - 'bin/bundle'
+Documentation:
+  Enabled: false
