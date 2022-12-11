@@ -14,6 +14,17 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    if logged?
+      session.delete(:user_id)
+      @current_user = nil
+
+      render json: 'Successfully logged out'
+    else
+      render json: 'User was not logged before'
+    end
+  end
+
   private
 
   def registration_params
