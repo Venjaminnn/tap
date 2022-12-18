@@ -24,10 +24,4 @@ class SessionsController < ApplicationController
       render json: 'User was not logged before'
     end
   end
-
-  private
-
-  def registration_params
-    params.permit(:nickname, :phone, :password, :email)
-  end
 end

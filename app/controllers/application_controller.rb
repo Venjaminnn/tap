@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def logged?
     current_user.present?
   end
+
+  def check_login!
+    return render json: 'User is not logged' unless logged?
+  end
 end
