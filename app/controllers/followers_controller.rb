@@ -11,6 +11,17 @@ class FollowersController < ApplicationController
     end
   end
 
+  def destroy
+    follow = UserFollow.find_by(destroy_params)
+
+    if follow
+      follow.destroy
+      render json: 'Successfully unfollowed'
+    else
+      render json: 'Error: Can not find follow'
+    end
+  end
+
   private
 
   def follow_params
@@ -19,5 +30,9 @@ class FollowersController < ApplicationController
 
   def create_params
     params.permit(:following_id)
+  end
+
+  def destroy_params
+    { following_id: params[:id], follower_id: current_user.id }
   end
 end
