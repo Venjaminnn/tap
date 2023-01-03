@@ -106,7 +106,7 @@ RSpec.describe PostsController, type: :controller do
       end
     end
 
-    context 'when trying to uodate post without log in' do
+    context 'when trying to update post without log in' do
       let(:post) { create(:post) }
       let(:params) do
         {
