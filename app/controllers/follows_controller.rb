@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FollowersController < ApplicationController
+class FollowsController < ApplicationController
   def create
     follow = UserFollow.new(follow_params)
 

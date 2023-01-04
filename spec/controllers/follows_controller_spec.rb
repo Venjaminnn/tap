@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe FollowersController, type: :controller do
+RSpec.describe FollowsController, type: :controller do
   let(:follower) { create(:user) }
   let(:following) { create(:user) }
 
