@@ -42,7 +42,7 @@ RSpec.describe FollowsController, type: :controller do
       let!(:user_follow) { create(:user_follow, following: following, follower: follower) }
 
       it 'Successfully unfollowed' do
-        delete :destroy, params: { id: following.id }
+        delete :destroy, params: { following_id: following.id }
 
         expect(response.body).to eq('Successfully unfollowed')
       end
@@ -50,7 +50,7 @@ RSpec.describe FollowsController, type: :controller do
 
     context 'when destroy follow failed' do
       it 'Unfollowed is failed' do
-        delete :destroy, params: { id: following.id }
+        delete :destroy, params: { following_id: following.id }
 
         expect(response.body).to eq('Error: Can not find follow')
       end

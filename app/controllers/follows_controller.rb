@@ -33,6 +33,6 @@ class FollowsController < ApplicationController
   end
 
   def destroy_params
-    { following_id: params[:id], follower_id: current_user.id }
+    { following_id: params[:following_id], follower_id: current_user.id }
   end
 end
