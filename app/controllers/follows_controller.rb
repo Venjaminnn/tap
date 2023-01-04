@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class FollowsController < ApplicationController
+  before_action :check_login!
+
   def create
     follow = UserFollow.new(follow_params)
 
