@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FollowersController < ApplicationController
+class FollowsController < ApplicationController
   def create
     follow = UserFollow.new(follow_params)
 
@@ -33,6 +33,6 @@ class FollowersController < ApplicationController
   end
 
   def destroy_params
-    { following_id: params[:id], follower_id: current_user.id }
+    { following_id: params[:following_id], follower_id: current_user.id }
   end
 end
