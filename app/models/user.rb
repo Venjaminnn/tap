@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   has_many :posts
+  has_many :comments
 
   validates :email, :password, :nickname, :phone, presence: true
 end
