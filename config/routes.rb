@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/feed', to: 'feeds#index'
 
+  resources :comments, only: :destroy
   resources :posts, only: %i[create update] do
     resources :comments, only: :create
   end
