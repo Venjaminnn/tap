@@ -99,6 +99,20 @@ RSpec.describe Posts::CommentsController, type: :controller do
       end
     end
 
+    context 'when post does not exist' do
+      let(:params) do
+        {
+          post_id: 0
+        }
+      end
+
+      it 'shows an error' do
+        get :index, params: params
+
+        expect(response.body).to eq('Error: Post not found')
+      end
+    end
+
     context 'when current user is not setted' do
       before do
         session[:user_id] = nil

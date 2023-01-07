@@ -17,10 +17,10 @@ module Posts
     def index
       post = Post.find_by(id: params[:post_id])
 
-      if post.present?
+      if post
         render json: post.comments
       else
-        render json: 'Comments not found', status: :not_found
+        render json: 'Error: Post not found', status: :not_found
       end
     end
 
