@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :comments, only: :destroy
   resources :posts, only: %i[create update] do
     resources :comments, only: %i[create index], controller: 'posts/comments'
+    resources :likes, only: %i[create], controller: 'posts/likes' do
+      delete 'destroy', on: :collection
+    end
   end
 
   resources :follows, only: %i[create] do

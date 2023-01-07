@@ -21,7 +21,7 @@ RSpec.describe CommentsController, type: :controller do
       end
     end
 
-    context 'when deleting comment if failed' do
+    context 'when deleting comment is failed' do
       it 'deleting is failed' do
         delete :destroy, params: { id: 0 }
 
