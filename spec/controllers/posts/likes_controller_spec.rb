@@ -86,4 +86,34 @@ RSpec.describe Posts::LikesController, type: :controller do
       end
     end
   end
+
+  describe 'GET #index' do
+    before do
+      session[:user_id] = user.id
+    end
+
+    let(:params) do
+      {
+        post_id: current_post.id
+      }
+    end
+
+    context 'show all likes of a post' do
+      let!(:likes) { create_list(:like, 3, post: current_post) }
+
+      it 'show all likes of a post' do
+        get :index, params: params
+
+        expect(JSON.parse(response.body).size).to eq(3)
+      end
+    end
+
+    context 'when post do not have any like' do
+      it 'do not show any like' do
+        get :index, params: params
+
+        expect(JSON.parse(response.body).size).to eq(0)
+      end
+    end
+  end
 end
