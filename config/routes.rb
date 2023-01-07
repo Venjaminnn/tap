@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :comments, only: :destroy
   resources :posts, only: %i[create update] do
     resources :comments, only: :create
+    resources :comments, only: :index, controller: 'posts/comments'
   end
 
   resources :follows, only: %i[create] do
