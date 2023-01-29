@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
+  def new; end
+
   def create
     user = User.find_by(email: params[:email], password: params[:password]) ||
            User.find_by(phone: params[:phone], password: params[:password])
 
-    if user.present?
-      session[:user_id] = user.id
-
-      render json: 'Successfully logged'
-    else
-      render json: 'Wrong email/phone or password'
+    respond_to do |format|
+      if user.valid?
+        format.html { redirect_to(feed_url, notice: 'Successfully logged') }
+      else
+        format.html { redirect_to(sign_up_url, notice: "Registration unsuccessfully: #{user.errors.messages}") }
+      end
     end
   end
 

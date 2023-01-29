@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SessionsController, type: :controller do
+RSpec.describe Api::SessionsController, type: :controller do
   let(:user) { create(:user) }
   describe 'POST #create' do
     context 'when logged in successfully' do

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Posts::CommentsController, type: :controller do
+RSpec.describe Api::Posts::CommentsController, type: :controller do
   let(:user) { create(:user) }
   let(:current_post) { create(:post, user: user) }
 
@@ -96,6 +96,20 @@ RSpec.describe Posts::CommentsController, type: :controller do
         get :index, params: params
 
         expect(JSON.parse(response.body).size).to eq(0)
+      end
+    end
+
+    context 'when post does not exist' do
+      let(:params) do
+        {
+          post_id: 0
+        }
+      end
+
+      it 'shows an error' do
+        get :index, params: params
+
+        expect(response.body).to eq('Error: Post not found')
       end
     end
 

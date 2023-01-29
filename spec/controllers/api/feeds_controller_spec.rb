@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe FeedsController, type: :controller do
+RSpec.describe Api::FeedsController, type: :controller do
   let(:current_user) { create(:user) }
 
   describe 'GET #index' do
