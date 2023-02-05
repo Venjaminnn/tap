@@ -1,12 +1,20 @@
 # frozen_string_literal: true
 
 class FeedsController < ApplicationController
+  before_action :set_active_storage_host
   before_action :check_login!
 
   def index
-    feed_posts = user_posts.or(following_posts).order(created_at: :desc)
+    @feed_posts = user_posts.or(following_posts).order(created_at: :desc)
 
-    render json: feed_posts
+    respond_to do |format|
+      if @feed_posts
+        # format.html { redirect_to(feed_url, notice: 'Successfully logged') }
+        format.html { render template: 'feed/index' }
+      else
+        format.html { redirect_to(sign_up_url, notice: "Login unsuccessfully: #{user.errors.messages}") }
+      end
+    end
   end
 
   private
@@ -21,5 +29,9 @@ class FeedsController < ApplicationController
 
   def following_posts
     Post.where(user_id: following_ids)
+  end
+
+  def set_active_storage_host
+    ActiveStorage::Current.host = request.base_url
   end
 end

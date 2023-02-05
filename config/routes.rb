@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   get '/feed', to: 'feeds#index'
 
   resources :comments, only: :destroy
-  resources :posts, only: %i[create update] do
+  resources :posts, only: %i[new create update] do
+    get :edit
     resources :comments, only: %i[create index], controller: 'posts/comments'
     resources :likes, only: %i[create index], controller: 'posts/likes' do
       delete 'destroy', on: :collection

@@ -4,8 +4,7 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    user = User.find_by(email: params[:email], password: params[:password]) ||
-           User.find_by(phone: params[:phone], password: params[:password])
+    user = User.third
 
     respond_to do |format|
       if user.valid?

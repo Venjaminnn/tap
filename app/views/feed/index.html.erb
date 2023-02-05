@@ -1,0 +1,59 @@
+<%= stylesheet_link_tag "application", media: "all" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feed</title>
+  <style>
+      body {
+          background-color: rgba(98, 98, 98, 1);
+          background-image: none !important;
+      }
+
+      .navbar {
+          position: fixed;
+          width: 100%;
+          height: 100px;
+          left: 0px;
+          top: 0px;
+          background: rgba(50, 50, 50, 0.5);
+      }
+
+      .feed {
+          position: absolute;
+          width: 1426px;
+          height: 3318px;
+          left: 41px;
+          top: 214px;
+      }
+  </style>
+</head>
+
+<body class="index">
+<section class="form feed">
+  <div class="navbar">
+    <p id="notice"><%= flash[:notice] %></p>
+    <tr>
+      <td class='account'><%= button_to 'Account' %></td>
+      <td class='search'><%= link_to 'Search' %></td>
+      <td class='new'><%= button_to 'New Post', new_post_path, method: :get %></td>
+    </tr>
+  </div>
+  <div class="feed">
+    <% @feed_posts.each do |feed_post| %>
+
+      <tr>
+        <td><%= image_tag(feed_post.image.url) %></td>
+        <td><%= feed_post.comment %></td>
+        <%= link_to post_edit_path(feed_post) do %>
+          <td><%= image_tag 'edit_icon.svg' %></td>
+        <% end %>
+      </tr>
+      <div>
+        <td><%= image_tag 'like_icon.svg' %></td>
+        <td><%= image_tag 'comment_icon.svg' %></td>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>

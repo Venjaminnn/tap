@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag "application", media: "all" %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+     <style>
+         body {
+             background-color: rgba(98, 98, 98, 1);
+             background-image: none !important;
+         }
+         .form-post {
+             background-color: white;
+         }
+    </style>
+  </head>
+
+    <body class="index">
+    <section class="form-feed">
+    <p id="notice"><%#= flash[:notice] %></p>
+      <div class="form post">
+        <header>Edit info</header>
+        <%= form_with url: post_path(@post), method: :patch do |f| %>
+          <%= f.text_field :comment, placeholder: "Write a caption..." %><br>
+          <%= f.submit "Done"%>
+        <% end %>
+      </div>
+    </body>
+</html>
