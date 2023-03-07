@@ -1,59 +1,124 @@
-<%= stylesheet_link_tag "application", media: "all" %>
+<%= stylesheet_link_tag "index", media: "all" %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Feed</title>
-  <style>
-      body {
-          background-color: rgba(98, 98, 98, 1);
-          background-image: none !important;
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheets" href="index.css"/>
+     <style>
+      #notice {
+        display: none; /* скрыть элемент по умолчанию */
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999;
+        width: 300px;
+        padding: 10px;
+        background-color: #fff;
+        box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+        border: 1px solid #ccc;
       }
 
-      .navbar {
-          position: fixed;
-          width: 100%;
-          height: 100px;
-          left: 0px;
-          top: 0px;
-          background: rgba(50, 50, 50, 0.5);
+      #notice.show {
+        display: block; /* показать элемент, если у него есть класс .show */
+        animation: fade 1s ease-out forwards;
+      }
+      .like-button {
+        background: transparent;
       }
 
-      .feed {
-          position: absolute;
-          width: 1426px;
-          height: 3318px;
-          left: 41px;
-          top: 214px;
+      .like-button.active{
+        background-color: red;
       }
-  </style>
-</head>
 
-<body class="index">
-<section class="form feed">
-  <div class="navbar">
-    <p id="notice"><%= flash[:notice] %></p>
-    <tr>
-      <td class='account'><%= button_to 'Account' %></td>
-      <td class='search'><%= link_to 'Search' %></td>
-      <td class='new'><%= button_to 'New Post', new_post_path, method: :get %></td>
-    </tr>
-  </div>
-  <div class="feed">
-    <% @feed_posts.each do |feed_post| %>
+      @keyframes fade {
+        from {
+          opacity: 0;
+          transform: translate(-50%, -10%);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, 0);
+        }
+      }
+    </style>
+    <script>
+      const notice = document.querySelector('#notice');
 
-      <tr>
-        <td><%= image_tag(feed_post.image.url) %></td>
-        <td><%= feed_post.comment %></td>
-        <%= link_to post_edit_path(feed_post) do %>
-          <td><%= image_tag 'edit_icon.svg' %></td>
-        <% end %>
-      </tr>
+      notice.classList.add('show');
+      setTimeout(() => {
+        notice.classList.remove('show');
+      }, 5000);
+    </script>
+  </head>
+  
+ <body>
+  <div class="index">
+
+    <div class="menu">
+
       <div>
-        <td><%= image_tag 'like_icon.svg' %></td>
-        <td><%= image_tag 'comment_icon.svg' %></td>
+        <td class="logo"><%= image_tag 'logo.svg', width:'145px', height:'145px'%></td>
       </div>
-    <% end %>
+      
+      <div style="margin: 30px">
+
+        <p id="notice"><%= flash[:notice] %></p>
+
+          <tr>
+          
+            <div class="menuContainer">
+              <div class="account" style="margin: 15px 0"><td><%= link_to (image_tag('person.svg')) %></td></div>
+              <div class="notifications" style="margin: 15px 0"><td><%= link_to (image_tag('notifications.svg')) %></td></div>
+              <div class="new-post" style="margin: 15px 0"><td><%= link_to (image_tag('add.svg')), new_post_path, method: :get %></td></div>
+            </div>
+
+            <div class="questions" style="margin: 15px 0"><td><%= link_to (image_tag('questions.svg')) %></td></div>
+
+            <div class="logout">
+              <td><%= link_to (image_tag('logout.svg')) %></td>
+            </div>
+
+          </tr>
+      </div>
   </div>
-</body>
+
+    <main>
+      <div class="searchBox">
+        <div class="search" >
+          <td>
+            <%= text_field_tag :search, params[:search], placeholder: "  Search..." %>
+          </td>
+        </div>
+      </div>
+
+       <div class="feed"> 
+        <ul class="post-list">
+          <% @feed_posts.each do |feed_post| %>
+            <li id="list" class="post">
+              <div class="post-image">
+                <%= link_to image_tag(feed_post.image.url, style: 'margin-bottom: 7px, height: 7em') %>
+                 <p class="post-comment"><%= feed_post.comment %></p>
+              </div>
+            
+            
+              <div class="post-actions">
+                <%= link_to post_edit_path(feed_post) do %>
+                   <%= image_tag 'edit_icon.svg', width: '44px', height: '42px'%> 
+                 <% end %> 
+                
+                <%= link_to post_likes_path(feed_post.id), method: :post, class: "like-button #{'active' if feed_post.liked_by?(@current_user)}" do %>
+                    <%= image_tag 'unlike.svg', width: '44px', height: '42px' %>
+                <% end %>
+   
+
+                 <%= image_tag 'comment_icon.svg', width: '44px', height: '42px'%> 
+              </div> 
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </main>
+    </div>
+  </body>
 </html>

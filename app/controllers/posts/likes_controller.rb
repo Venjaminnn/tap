@@ -7,7 +7,7 @@ module Posts
     def create
       if post
         like_transaction
-        render json: post
+        render :post
       else
         render json: 'Error: Post not find', status: :not_found
       end

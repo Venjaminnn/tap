@@ -9,7 +9,7 @@ module Api
       if user.present?
         session[:user_id] = user.id
 
-        render json: 'Successfully logged'
+        render json: 'User is successfully logged'
       else
         render json: 'Wrong email/phone or password'
       end
@@ -20,7 +20,7 @@ module Api
         session.delete(:user_id)
         @current_user = nil
 
-        render json: 'Successfully logged out'
+        render json: 'User is successfully logged out'
       else
         render json: 'User was not logged before'
       end

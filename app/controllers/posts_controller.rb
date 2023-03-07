@@ -6,10 +6,10 @@ class PostsController < ApplicationController
   def new; end
 
   def create
-    @post = Post.create(post_params)
+    post = Post.create(post_params)
 
     respond_to do |format|
-      if @post
+      if post
         format.html { redirect_to(feed_url, notice: 'Post successfully created') }
       else
         format.html { redirect_to(feed_url, notice: "Something went wrong: #{post.errors.messages}") }
@@ -24,7 +24,6 @@ class PostsController < ApplicationController
   end
 
   def update
-    binding.pry
     post = current_user.posts.find_by(id: params[:id])
 
     respond_to do |format|
