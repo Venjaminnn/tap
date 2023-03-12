@@ -5,20 +5,24 @@ module Posts
     before_action :check_login!
 
     def create
-      if post
-        like_transaction
-        render :post
-      else
-        render json: 'Error: Post not find', status: :not_found
+      respond_to do |format|
+        if post
+          like_transaction
+          format.html { redirect_to(feed_path, notice: 'Post successfully liked') }
+        else
+          format.html { redirect_to(feed_url, notice: 'Error: Post not find') }
+        end
       end
     end
 
     def destroy
-      if post && like
-        dislike_transaction
-        render json: post
-      else
-        render json: 'Error: Post or like is not founded', status: :not_found
+      respond_to do |format|
+        if post && like
+          dislike_transaction
+          format.html { redirect_to(feed_url, notice: 'Dislike successfully created') }
+        else
+          format.html { redirect_to(feed_url, notice: 'Error: Post or like is not founded') }
+        end
       end
     end
 

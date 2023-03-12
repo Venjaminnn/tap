@@ -4,23 +4,27 @@ class FollowsController < ApplicationController
   before_action :check_login!
 
   def create
-    follow = UserFollow.new(follow_params)
+    follow = UserFollow.first_or_initialize(follow_params)
 
-    if follow.save
-      render json: follow
-    else
-      render json: follow.errors
+    respond_to do |format|
+      if follow.save
+        format.html { redirect_to(user_path(@current_user.id), notice: 'Successfully followed') }
+      else
+        format.html { redirect_to(users_path(search: params[:search]), notice: "Can not create follow: #{follow.errors.messages}" ) }
+      end
     end
   end
 
   def destroy
     follow = UserFollow.find_by(destroy_params)
 
-    if follow
-      follow.destroy
-      render json: 'Successfully unfollowed'
-    else
-      render json: 'Error: Can not find follow'
+    respond_to do |format|
+      if follow
+        follow.destroy
+        format.html { redirect_to(user_path(@current_user.id), notice: 'Successfully unfollowed') }
+      else
+        format.html { redirect_to(user_path(@current_user.id), notice: 'Can not find follow') }
+      end
     end
   end
 

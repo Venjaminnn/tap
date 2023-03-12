@@ -6,7 +6,7 @@
     <link rel="stylesheets" href="index.css"/>
      <style>
       #notice {
-        display: none; /* скрыть элемент по умолчанию */
+        display: none; 
         position: fixed;
         top: 0;
         left: 50%;
@@ -20,15 +20,8 @@
       }
 
       #notice.show {
-        display: block; /* показать элемент, если у него есть класс .show */
+        display: block; 
         animation: fade 1s ease-out forwards;
-      }
-      .like-button {
-        background: transparent;
-      }
-
-      .like-button.active{
-        background-color: red;
       }
 
       @keyframes fade {
@@ -41,6 +34,17 @@
           transform: translate(-50%, 0);
         }
       }
+      .likes-count {
+        color: #ffffff;
+        margin-left: 5px;
+        font-size: 14px;
+        font-weight: bold;
+
+      }
+      .likes {
+        display: flex;
+        align-items: center;
+      }
     </style>
     <script>
       const notice = document.querySelector('#notice');
@@ -52,42 +56,47 @@
     </script>
   </head>
   
- <body>
-  <div class="index">
+  <body>
+    <div class="index">
 
-    <div class="menu">
+      <div class="menu">
 
-      <div>
-        <td class="logo"><%= image_tag 'logo.svg', width:'145px', height:'145px'%></td>
-      </div>
-      
-      <div style="margin: 30px">
+        <div>
+          <td class="logo"><%= image_tag 'logo.svg', width:'145px', height:'145px'%></td>
+        </div>
+        
+        <div style="margin: 30px">
 
-        <p id="notice"><%= flash[:notice] %></p>
+          <p id="notice"><%= flash[:notice] %></p>
 
-          <tr>
-          
-            <div class="menuContainer">
-              <div class="account" style="margin: 15px 0"><td><%= link_to (image_tag('person.svg')) %></td></div>
-              <div class="notifications" style="margin: 15px 0"><td><%= link_to (image_tag('notifications.svg')) %></td></div>
-              <div class="new-post" style="margin: 15px 0"><td><%= link_to (image_tag('add.svg')), new_post_path, method: :get %></td></div>
-            </div>
+            <tr>
+            
+              <div class="menuContainer">
+                <div class="account" style="margin: 15px 0"><td><%= link_to (image_tag('person.svg')), user_path(@current_user) %></td></div>
+                <div class="notifications" style="margin: 15px 0"><td><%= link_to (image_tag('notifications.svg')) %></td></div>
+                <div class="new-post" style="margin: 15px 0"><td><%= link_to (image_tag('add.svg')), new_post_path, method: :get %></td></div>
+              </div>
 
-            <div class="questions" style="margin: 15px 0"><td><%= link_to (image_tag('questions.svg')) %></td></div>
+              <div class="questions" style="margin: 15px 0"><td><%= link_to (image_tag('questions.svg')) %></td></div>
 
-            <div class="logout">
-              <td><%= link_to (image_tag('logout.svg')) %></td>
-            </div>
+              <div class="logout">
+                <td><%= link_to (image_tag('logout.svg')), logout_path, data: {turbo_method: :delete} %></td>
+              </div>
 
-          </tr>
-      </div>
-  </div>
+            </tr>
+        </div>
+    </div>
 
     <main>
       <div class="searchBox">
         <div class="search" >
+        
           <td>
-            <%= text_field_tag :search, params[:search], placeholder: "  Search..." %>
+            <%= form_tag users_path, method: :get do %>
+              <td>
+                <%= text_field_tag :search, params[:search], placeholder: "  Search..." %>
+              </td>
+            <% end %>
           </td>
         </div>
       </div>
@@ -106,13 +115,21 @@
                 <%= link_to post_edit_path(feed_post) do %>
                    <%= image_tag 'edit_icon.svg', width: '44px', height: '42px'%> 
                  <% end %> 
-                
-                <%= link_to post_likes_path(feed_post.id), method: :post, class: "like-button #{'active' if feed_post.liked_by?(@current_user)}" do %>
-                    <%= image_tag 'unlike.svg', width: '44px', height: '42px' %>
-                <% end %>
-   
+              
+              <div class="likes">
+                <span class="likes-count"><%= "#{feed_post.likes_count} #{'like'.pluralize(feed_post.likes_count)}" %></span>
 
-                 <%= image_tag 'comment_icon.svg', width: '44px', height: '42px'%> 
+                <% if feed_post.liked_by?(@current_user) %>
+                  <%= link_to destroy_post_likes_path(feed_post.id), data: {turbo_method: :delete }, class: "like-button" do %>
+                    <%= image_tag 'like.svg', width: '44px', height: '42px' %>
+                  <% end %>
+                <% else %>
+                  <%= link_to post_likes_path(feed_post.id), data: {turbo_method: :post }, class: "like-button active" do %>
+                    <%= image_tag 'unlike.svg', width: '44px', height: '42px' %>
+                  <% end %>
+                <% end %>
+              </div>
+                 <%= link_to (image_tag 'comment_icon.svg', width: '44px', height: '42px'), post_comments_path(feed_post.id), method: :get %> 
               </div> 
             </li>
           <% end %>

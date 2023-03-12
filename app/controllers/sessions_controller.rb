@@ -12,19 +12,22 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         format.html { redirect_to(feed_url, notice: 'User is successfully logged') }
       else
-        format.html { redirect_to(sign_up_url, notice: "Registration unsuccessfully: #{user.errors.messages}") }
+        format.html { redirect_to(root_path, notice: "Registration unsuccessfully: #{user.errors.messages}") }
       end
     end
   end
 
   def destroy
-    if logged?
-      session.delete(:user_id)
-      @current_user = nil
 
-      render json: 'User is successfully logged out'
-    else
-      render json: 'User was not logged before'
+    respond_to do |format|
+      if logged?
+        session.delete(:user_id)
+        @current_user = nil
+
+        format.html { redirect_to(root_path, notice: 'User is successfully logged out') }
+      else
+        format.html { redirect_to(root_path, notice: 'User was not logged before') }
+      end
     end
   end
 end
