@@ -36,6 +36,16 @@ module Posts
       end
     end
 
+    def index
+      post = Post.find_by(id: params[:post_id])
+
+      if post
+        render json: post.likes
+      else
+        render json: 'Post not found', status: :not_found
+      end
+    end
+
     private
 
     def post
