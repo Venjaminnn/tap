@@ -166,9 +166,6 @@
       .delete-button {
         margin-left: 10px;
       }
-
-
-
     </style>
   </head>
 
@@ -179,7 +176,7 @@
       <header>Comments</header>
 
         <div class="comments list">
-          <% if @comments.any? %>
+          <% if @comments %>
             <ul>
               <% @comments.each do |comment| %>
                 <li id="list" class="comments">

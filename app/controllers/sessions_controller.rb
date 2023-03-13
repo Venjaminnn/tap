@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    user = User.first || User.find_by(email: params[:email], password: params[:password]) ||
+    user = User.find_by(email: params[:email], password: params[:password]) ||
       User.find_by(phone: params[:phone], password: params[:password])
 
     respond_to do |format|

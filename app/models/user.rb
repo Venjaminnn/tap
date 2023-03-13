@@ -3,7 +3,6 @@
 class User < ApplicationRecord
   has_many :posts
   has_many :comments
-  # has_many :user_follows
 
   validates :email, :password, :nickname, :phone, presence: true
 
@@ -11,11 +10,11 @@ class User < ApplicationRecord
     UserFollow.where(follower: self)
   end
 
-  def self.search(search)
+  def self.search(search, current_user)
     if search
-      where('nickname LIKE ?', "%#{search}%")
+      where('nickname LIKE ?', "%#{search}%").where.not(id: current_user.id)
     else
-      User.all
+      User.all.where.not(id: current_user.id)
     end
   end
 end

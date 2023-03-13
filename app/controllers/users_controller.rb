@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def index
     respond_to do |format|
       if logged? && params[:search].present?
-        @users = User.search(params[:search])
+        @users = User.search(params[:search], current_user)
         format.html { render 'users/index'}
       else
         format.html {redirect_to(feed_path)}

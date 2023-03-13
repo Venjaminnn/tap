@@ -9,13 +9,13 @@ RSpec.describe Api::SessionsController, type: :controller do
       it 'login user by email and password' do
         post :create, params: { email: user.email, password: user.password }
 
-        expect(response.body).to eq('Successfully logged')
+        expect(response.body).to eq('User is successfully logged')
       end
 
       it 'login user by phone and password' do
         post :create, params: { phone: user.phone, password: user.password }
 
-        expect(response.body).to eq('Successfully logged')
+        expect(response.body).to eq('User is successfully logged')
       end
 
       context 'when logged in failed' do
@@ -37,7 +37,7 @@ RSpec.describe Api::SessionsController, type: :controller do
       it 'successfully logged out user' do
         delete :destroy
 
-        expect(response.body).to eq('Successfully logged out')
+        expect(response.body).to eq('User is successfully logged out')
       end
     end
 

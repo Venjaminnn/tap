@@ -4,7 +4,7 @@ class FollowsController < ApplicationController
   before_action :check_login!
 
   def create
-    follow = UserFollow.first_or_initialize(follow_params)
+    follow = UserFollow.find_or_initialize_by(follow_params)
 
     respond_to do |format|
       if follow.save
