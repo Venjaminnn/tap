@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         format.html { redirect_to(feed_url, notice: 'User is successfully logged') }
       else
-        format.html { redirect_to(root_path, notice: "Registration unsuccessfully: #{user.errors.messages}") }
+        format.html { redirect_to(root_path, notice: 'Registration unsuccessfully') }
       end
     end
   end

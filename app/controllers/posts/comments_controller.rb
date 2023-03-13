@@ -20,12 +20,14 @@ module Posts
     end
 
     def index
-      post = Post.find_by(id: params[:post_id])
+      @comments = post.comments
 
-      if post.present?
-        render json: post.comments
-      else
-        render json: 'Comments not found', status: :not_found
+      respond_to do |format|
+        if @comments
+          format.html { render 'comments/index'}
+        else
+          format.html { redirect_to(feed_url, notice: "Post not found: #{@comments.errors.messages}") }
+        end
       end
     end
 
