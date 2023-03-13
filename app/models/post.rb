@@ -18,4 +18,8 @@ class Post < ApplicationRecord
   def dislike
     update!(likes_count: self.likes_count -= 1)
   end
+
+  def liked_by?(user)
+    likes.where(user: user).present?
+  end
 end

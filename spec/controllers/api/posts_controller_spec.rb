@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe PostsController, type: :controller do
+RSpec.describe Api::PostsController, type: :controller do
   let(:user) { create(:user) }
   describe 'POST #create' do
     context 'when successfully creating post' do

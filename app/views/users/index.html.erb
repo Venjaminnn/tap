@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+     <style>
+        body {
+          background-image: none !important;
+          background-color: #626262 !important;
+        }
+        h1 {    
+          text-align: center;
+          color: white;
+          font-size: 36px;
+          margin-bottom: 20px;
+        }
+        .users {
+          color: white;
+          font-size: 24px;
+          margin-bottom: 10px;
+          padding-right: 20px;
+        }
+
+        .follow {
+          width: 50px;
+          height: 50px;
+          border-radius: 40%;
+          border: 1px solid white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+          }
+        .user-follows-container{
+          display: flex;
+          align-items: center;
+          padding: 20px;
+          border: 1px solid #3E3E3E;
+          border-radius: 5px;
+          box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+          margin: 30px 20px;
+        }
+        .follows ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        .follows .list {
+          color: white;
+          font-size: 24px;
+          margin-bottom: 10px;
+        }
+        .follows p {
+          font-size: 18px;
+          margin-top: 20px;
+        }
+        .follows img {
+          vertical-align: middle;
+        }
+
+    </style>
+  </head>
+
+    
+  <body class="profile">
+
+    <div class="profile-section">
+
+      <h1>Search</h1>
+
+      <div class="follows list", style="margin-top: 150px;">
+        <% if @users.any? %>
+          <ul>
+
+            <div class="user-follows-container">
+              <% @users.each do |user| %>
+                <li id="list" class="users"><%= user.nickname %></li>
+
+                <%= link_to follows_path(following_id: user.id, search: params[:search]), data: {turbo_method: :post } do %>
+                  <span class="follow"><%= image_tag 'follow.svg', width: '25px', height: '27px' %></span>
+                <% end %>
+              <% end %>
+            </div>
+
+          </ul>
+        <% else %>
+          <p style="color: white">No results</p>
+        <% end %>
+      </div>
+    </div> 
+  </body>
+</html>

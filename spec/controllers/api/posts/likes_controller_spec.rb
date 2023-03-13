@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Posts::LikesController, type: :controller do
+RSpec.describe Api::Posts::LikesController, type: :controller do
   let(:user) { create(:user) }
   let(:current_post) { create(:post, user: user) }
 

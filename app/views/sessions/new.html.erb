@@ -1,0 +1,68 @@
+<%= stylesheet_link_tag "application", media: "all" %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8"/>    
+      <link rel="stylesheets" href="application.css"/>
+      <style>
+        #notice {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 9999;
+          width: 300px;
+          padding: 10px;
+          background-color: #fff;
+          box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+          border: 1px solid #ccc;
+        }
+
+        #notice.show {
+          display: block;
+          animation: fade 1s ease-out forwards;
+        }
+      </style>
+  </head>
+  
+  <body>
+    <section class="wrapper">
+      <p id="notice"><%= flash[:notice] %></p>
+      <div class="form login">
+        <header>Login</header>
+        <%= form_with url: login_url do |f| %>
+          <%= f.text_field :email, placeholder: "Email" %><br>
+          <%= f.text_field :phone, placeholder: "Phone" %><br>
+          <%= f.password_field :password, placeholder: "Password" %><br>
+          <%= f.submit "Login"%>
+        <% end %>
+      </div>
+
+      <div class="form registration">
+        <header>Registration</header>
+
+        <%= form_with url: sign_up_url do |f| %>
+          <%= f.text_field :phone, placeholder: "Phone" %><br>
+          <%= f.text_field :nickname, placeholder: "Username" %><br>
+          <%= f.password_field :password, placeholder: "Password" %><br>
+          <%= f.submit "Sign In!"%>
+        <% end %>
+      </div>
+
+      <script>
+          const wrapper = document.querySelector(".wrapper"),
+              loginHeader = document.querySelector(".login header"),
+              registrationHeader = document.querySelector(".registration header");
+
+          loginHeader.addEventListener("click", () => {
+              wrapper.classList.add("active");
+          })
+          registrationHeader.addEventListener("click", () => {
+              wrapper.classList.remove("active");
+          })
+      </script>
+      </header>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<%= stylesheet_link_tag "application", media: "all" %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <style>
+      body {
+        background-image: none !important;
+        background-color: #626262 !important;
+        }
+
+      .profile-section {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        margin-bottom: 300px;
+      }
+
+      h1 {    
+        text-align: center;
+        color: white;
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      .user_follows ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .user_follows li {
+        color: white;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .user_follows img {
+        vertical-align: middle;
+      }
+
+      .user_follows p {
+        font-size: 18px;
+        margin-top: 20px;
+      }
+      .edit-profile {
+        background: white;
+        height: 50px;
+        border-radius: 15px;
+        border: 2px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+        font-size: 15px;
+        padding: 5px 10px;
+        font-weight: bold;
+      }
+      .edit-profile-container{
+        border-radius: 5px;
+        margin-bottom: 10px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+      }
+      .user-nickname {
+        color: white;
+        font-size: 28px;
+        padding-right: 20px;
+        font-weight: bold;
+      }
+      .follows-container{
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border: 1px solid #3E3E3E;
+        border-radius: 5px;
+        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+        margin: 30px 20px;
+      }
+      .unfollow {
+        width: 50px;
+        height: 50px;
+        border-radius: 40%;
+        border: 1px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+      }
+      .users {
+        padding-right: 20px;
+      }
+      header {
+        font-size: 25px;
+        color: white;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+    
+  <body class="profile">
+
+  <div class="profile-section">
+
+    <h1>Profile</h1>
+
+    <div class="edit-profile-container">
+      <div class="user-nickname"><%= @current_user.nickname %></div>
+      <div class="edit-profile" style="margin: 15px 0">Edit profile</div>
+    </div>
+
+    <div class="user_follows list", style="margin-top: 150px;">
+      <% if @current_user.user_follows.any? %>
+        <ul>
+          <header>Following</header>
+            <div class="follows-container">
+              <% @current_user.user_follows.each do |user_follow| %>
+                <li id="list" class="users"><%= user_follow.following.nickname %></li>
+
+                <%= link_to unfollow_follows_path(user_follow.following.id), data: {turbo_method: :delete } do %>
+                  <span class="unfollow"><%= image_tag 'unfollow.svg', width: '25px', height: '27px' %></span>
+                <% end %>
+              <% end %>
+            </div>
+        </ul>
+      <% else %>
+        <p style="color: white; text-align: center">No follows</p>
+      <% end %>
+    </div>
+  </div> 
+  </body>
+</html>
