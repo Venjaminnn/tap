@@ -10,11 +10,13 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/feed', to: 'feeds#index'
 
-  resources :comments, only: :destroy
-  resources :posts, only: %i[create update] do
-    resources :comments, only: %i[create index], controller: 'posts/comments'
-    resources :likes, only: %i[create], controller: 'posts/likes' do
-      delete 'destroy', on: :collection
+  resources :users, only: %i[show index]
+  resources :posts, only: %i[new create update] do
+    get :edit
+    resources :comments, only: %i[new create index destroy], controller: 'posts/comments'
+    resources :likes, only: %i[], controller: 'posts/likes' do
+      post 'create', on: :collection
+      delete 'destroy', on: :collection, as: :destroy
     end
   end
 

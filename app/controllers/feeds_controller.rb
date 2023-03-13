@@ -9,7 +9,6 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       if @feed_posts
-        # format.html { redirect_to(feed_url, notice: 'Successfully logged') }
         format.html { render template: 'feed/index' }
       else
         format.html { redirect_to(sign_up_url, notice: "Login unsuccessfully: #{user.errors.messages}") }
