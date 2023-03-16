@@ -24,14 +24,6 @@
   font-family: 'Sarala',
   sans-serif;
 }
-body {
-  background-image: url('https://res.cloudinary.com/hzodm3yak/image/upload/v1678994440/background_nwyodk.jpg');
-  background-position: center;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .wrapper {
   position: absolute;
   max-width: 450px;
