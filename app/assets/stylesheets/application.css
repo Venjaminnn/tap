@@ -25,7 +25,7 @@
   sans-serif;
 }
 body {
-  background-image: url('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982425/background_vhzlmi.png');
+  background-image: image-url('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982425/background_vhzlmi.png');
   min-height: 100vh;
   display: flex;
   align-items: center;
