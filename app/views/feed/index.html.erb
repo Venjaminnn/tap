@@ -72,15 +72,15 @@
             <tr>
             
               <div class="menuContainer">
-                <div class="account" style="margin: 15px 0"><td><%= link_to (image_tag('assets/images/person.svg')), user_path(@current_user) %></td></div>
-                <div class="notifications" style="margin: 15px 0"><td><%= link_to (image_tag('assets/images/notifications.svg')) %></td></div>
-                <div class="new-post" style="margin: 15px 0"><td><%= link_to (image_tag('assets/images/add.svg')), new_post_path, method: :get %></td></div>
+                <div class="account" style="margin: 15px 0"><td><%= link_to (image_tag asset_path('person.svg')), user_path(@current_user) %></td></div>
+                <div class="notifications" style="margin: 15px 0"><td><%= link_to (image_tag asset_path('notifications.svg')) %></td></div>
+                <div class="new-post" style="margin: 15px 0"><td><%= link_to (image_tag asset_path('add.svg')), new_post_path, method: :get %></td></div>
               </div>
 
-              <div class="questions" style="margin: 15px 0"><td><%= link_to (image_tag('assets/images/questions.svg')) %></td></div>
+              <div class="questions" style="margin: 15px 0"><td><%= link_to (image_tag('questions.svg')) %></td></div>
 
               <div class="logout">
-                <td><%= link_to (image_tag('assets/images/logout.svg')), logout_path, data: {turbo_method: :delete} %></td>
+                <td><%= link_to (image_tag asset_path('logout.svg')), logout_path, data: {turbo_method: :delete} %></td>
               </div>
 
             </tr>
