@@ -80,4 +80,5 @@ end
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
   gem 'rails_12factor'
+  gem 'mini_portile2', '>= 2.8.0'
 end

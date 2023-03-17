@@ -318,6 +318,7 @@ DEPENDENCIES
   factory_bot_rails
   importmap-rails
   jbuilder
+  mini_portile2 (>= 2.8.0)
   pg (>= 0.18, < 2.0)
   pry-rails
   puma (~> 5.0)
