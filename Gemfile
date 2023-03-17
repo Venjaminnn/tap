@@ -21,7 +21,7 @@ gem 'puma', '~> 5.0'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
-
+gem 'uglifier', '~> 3.0.4'
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails'
 
@@ -36,6 +36,7 @@ gem 'pry-rails'
 gem 'redis', '~> 4.0'
 gem 'carrierwave'
 gem 'cloudinary'
+gem "rake", "~> 13.0"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -50,7 +51,6 @@ gem 'bootsnap', require: false
 
 # Use Sass to process CSS
 gem "sassc-rails"
-gem "uglifier"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -77,7 +77,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-
-gem 'rails_12factor', group: :production
-
-gem "rake", "~> 13.0"
