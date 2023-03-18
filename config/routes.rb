@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   resources :users, only: %i[show index]
   resources :posts, only: %i[new create update] do
     get :edit
-    resources :comments, only: %i[new index], controller: 'posts/comments' do
+    resources :comments, only: %i[new], controller: 'posts/comments' do
+      get 'index', on: :collection, to: 'posts/comments#index'
       get 'create', on: :collection, to: 'posts/comments#create'
       get 'destroy', on: :collection, as: :destroy, to: 'posts/comments#destroy'
     end
