@@ -24,7 +24,7 @@ module Posts
 
       respond_to do |format|
         if @comments
-          format.html { render 'comments/index'}
+          format.html { render 'comments/index' }
         else
           format.html { redirect_to(feed_url, notice: 'Post not found') }
         end
