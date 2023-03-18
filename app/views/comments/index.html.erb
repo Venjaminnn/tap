@@ -206,7 +206,7 @@
     <div class="add-comment-section">
       <header>Add comment</header>
 
-      <%= form_with url: post_comments_url, method: :post do |f| %>
+      <%= form_with url: create_post_comments_url, method: :post do |f| %>
         <td class="add-comment"><%= f.text_field :text, placeholder: "Your comment" %><br></td>
         <td class="form-field"><%= f.submit 'Add comment' %></td>
       <% end %>
