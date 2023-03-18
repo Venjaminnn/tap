@@ -8,6 +8,7 @@ ruby '2.7.1'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4'
 gem 'rubocop', require: false
+gem 'pg', '>= 0.18', '< 2.0'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -78,7 +79,6 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '>= 0.18', '< 2.0'
   gem 'rails_12factor'
   gem 'mini_portile2', '>= 2.8.0'
 end
