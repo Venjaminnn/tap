@@ -32,7 +32,7 @@ module Posts
     end
 
     def destroy
-      comment = current_user.comments.find_by(id: params[:id])
+      comment = current_user.comments.find_by(id: params[:comment_id])
       
       respond_to do |format|
         if comment
