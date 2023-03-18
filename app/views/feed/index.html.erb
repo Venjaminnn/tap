@@ -109,7 +109,7 @@
           <% @feed_posts.each do |feed_post| %>
             <li id="list" class="post">
               <div class="post-image">
-                <%= link_to image_tag(feed_post.image.url, style: 'margin-bottom: 7px, height: 7em') %>
+                <%= link_to cl_image_tag(feed_post.image.url, style: 'margin-bottom: 7px, height: 7em') %>
                  <p class="post-comment"><%= feed_post.comment %></p>
               </div>
             

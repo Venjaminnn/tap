@@ -1,0 +1,12 @@
+production:
+  cloud_name: dx1gxrz2q
+  api_key: '586546323117168'
+  api_secret: "7IgbR--c0v6Py31_54vqKxa9B3w"
+  enhance_image_tag: true
+  static_file_support: true
+development:
+  cloud_name: dx1gxrz2q
+  api_key: '586546323117168'
+  api_secret: "7IgbR--c0v6Py31_54vqKxa9B3w"
+  enhance_image_tag: true
+  static_file_support: true

@@ -35,7 +35,7 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
-  config.assets.precompile += %w[ assets/*.css assets/*.js ]
+  # config.assets.precompile += %w[ assets/*.css assets/*.js ]
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
@@ -81,6 +81,7 @@ Rails.application.configure do
 
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
+  config.active_storage.service = :cloudinary
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
