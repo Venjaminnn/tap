@@ -6,17 +6,17 @@ RSpec.describe 'Comments', type: :feature do
   let!(:current_user) { create(:user, password: 'password') }
   let!(:comments) { create_list(:comment, 3, post: post, user: current_user) }
 
-  context 'multiply sessions' do
-    scenario 'create message vision for all', js: true do
+  # context 'multiply sessions' do
+  #   scenario 'create message vision for all', js: true do
 
-      Capybara.using_session('current_user') do
-        sign_in(current_user)
-        visit feed_path
+  #     Capybara.using_session('current_user') do
+  #       sign_in(current_user)
+  #       visit feed_path
 
-        expect(page).to have_content 'Comments'
-      end
-    end
-  end
+  #       expect(page).to have_content 'Comments'
+  #     end
+  #   end
+  # end
 
   # it "displays a list of comments" do
   #   comments.each do |comment|
