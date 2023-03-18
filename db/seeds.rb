@@ -7,8 +7,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 puts 'Creating seed'
-user = User.create(nickname: 'TestUser', phone: '+198327941501', password: 'test_password', email: 'hello@mail.com')
-second_user = User.create(nickname: 'SecondUser', phone: '+898327941501', password: 'second_password',
+user = User.create(nickname: 'testuser', phone: '+198327941501', password: 'test_password', email: 'hello@mail.com')
+second_user = User.create(nickname: 'seconduser', phone: '+898327941501', password: 'second_password',
                           email: 'hello2@mail.com')
 number = rand(1..10)
 word = 'Enim molestiae incidunt rem ipsum perferendis beatae excepturi tenetur.'
