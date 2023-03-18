@@ -190,7 +190,7 @@
                   <% if comment.user == @current_user %>
                     <div class="delete-button">
                       <%= link_to post_comment_path(comment.id, post_id: comment.post.id), data: {turbo_method: :delete } do %>
-                        <span style="float: right;"><%= image_tag asset_path('delete.svg', width: '44px', height: '42px') %></span>
+                        <span style="float: right;"><%= image_tag ('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982418/delete_gzfb3h.svg', width: '44px', height: '42px') %></span>
                       <% end %>
                     </div>
                 <% end %>
