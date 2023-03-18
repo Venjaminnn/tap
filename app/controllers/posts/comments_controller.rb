@@ -14,7 +14,7 @@ module Posts
         if comment.save
           format.html { redirect_to(post_comments_path, notice: 'Comment successfully created') }
         else
-          format.html { redirect_to(post_comments_url, notice: "Something went wrong: #{comment.errors.messages}") }
+          format.html { redirect_to(feed_url, notice: "Something went wrong: #{comment.errors.messages}") }
         end
       end
     end
