@@ -14,7 +14,7 @@ module Posts
         if comment.save
           format.html { redirect_to(post_comments_path, notice: 'Comment successfully created') }
         else
-          format.html { redirect_to(post_comments_url, notice: "Something went wrong: #{comments.errors.messages}") }
+          format.html { redirect_to(post_comments_url, notice: "Something went wrong: #{comment.errors.messages}") }
         end
       end
     end
@@ -26,7 +26,7 @@ module Posts
         if @comments
           format.html { render 'comments/index'}
         else
-          format.html { redirect_to(feed_url, notice: "Post not found: #{@comments.errors.messages}") }
+          format.html { redirect_to(feed_url, notice: 'Post not found') }
         end
       end
     end
