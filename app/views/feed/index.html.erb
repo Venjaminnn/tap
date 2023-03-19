@@ -149,7 +149,7 @@
       li#list.post{
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
-        margin-top: 30px;
+        margin-top: 70px;
       }
       #list {
         width: 100%;
@@ -169,6 +169,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
         margin-top: 30px;
+        margin-right: 100px;
       }
 
       .post {
@@ -365,11 +366,11 @@
                 <span class="likes-count"><%= "#{feed_post.likes_count} #{'like'.pluralize(feed_post.likes_count)}" %></span>
 
                 <% if feed_post.liked_by?(@current_user) %>
-                  <%= link_to destroy_post_likes_path(feed_post.id), data: {turbo_method: :delete }, class: "like-button" do %>
+                  <%= link_to destroy_post_likes_path(feed_post.id), class: "like-button" do %>
                     <%= image_tag 'https://res.cloudinary.com/hzodm3yak/image/upload/v1678982420/like_qfc6jk.svg', width: '44px', height: '42px' %>
                   <% end %>
                 <% else %>
-                  <%= link_to post_likes_path(feed_post.id), data: {turbo_method: :post }, class: "like-button active" do %>
+                  <%= link_to post_likes_path(feed_post.id), class: "like-button active" do %>
                     <%= image_tag 'https://res.cloudinary.com/hzodm3yak/image/upload/v1678982422/unlike_wkmers.svg', width: '44px', height: '42px' %>
                   <% end %>
                 <% end %>

@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "application", media: "all" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,7 +6,7 @@
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Sarala:wght@400;700&display=swap');
 
-         body {
+        body {
           background-image: url('https://res.cloudinary.com/hzodm3yak/image/upload/v1678994440/background_nwyodk.jpg');
           background-position: center;
           min-height: 100vh;
@@ -31,13 +32,7 @@
           display: block;
           animation: fade 1s ease-out forwards;
         }
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: 'Sarala',
-          sans-serif;
-        }
+
         .wrapper {
           position: absolute;
           max-width: 450px;
@@ -53,7 +48,7 @@
         .form.login {
           position: absolute;
           left: 50%;
-          bottom: -86%;
+          bottom: -92%;
           transform: translateX(
                   -50%
           );
@@ -183,10 +178,10 @@
       <div class="form login">
         <header>Login</header>
         <%= form_with url: login_url do |f| %>
-          <%= f.text_field :email, placeholder: "Email" %><br>
-          <%= f.text_field :phone, placeholder: "Phone" %><br>
-          <%= f.password_field :password, placeholder: "Password" %><br>
-          <%= f.submit "Login"%>
+          <%= f.text_field :email, placeholder: "Email", style:"max-width: 450px; margin-left: 120px;" %><br>
+          <%= f.text_field :phone, placeholder: "Phone", style:"max-width: 450px; margin-left: 120px;" %><br>
+          <%= f.password_field :password, placeholder: "Password", style:"max-width: 450px; margin-left: 120px;" %><br>
+          <%= f.submit "Login", style:"max-width: 450px; margin-left: 140px;"%>
         <% end %>
       </div>
 

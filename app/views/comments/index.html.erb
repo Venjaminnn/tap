@@ -5,7 +5,7 @@
     <meta charset="UTF-8"/>
     <link rel="stylesheets" href="new.css"/>
      <style>
-     @import url('https://fonts.googleapis.com/css2?family=Sarala:wght@400;700&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Sarala:wght@400;700&display=swap');
      
       body {
         background-image: none !important;
@@ -168,6 +168,10 @@
       .delete-button {
         margin-left: 10px;
       }
+      #list {
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
     </style>
   </head>
 
@@ -191,7 +195,7 @@
                 </div>
                   <% if comment.user == @current_user %>
                     <div class="delete-button">
-                      <%= link_to post_comment_destroy_path(comment.id, post_id: comment.post.id), data: { turbo_method: :delete } do %>
+                      <%= link_to post_comment_destroy_path(comment.id, post_id: comment.post.id) do %>
                         <span style="float: right;"><%= image_tag('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982418/delete_gzfb3h.svg', width: '44px', height: '42px') %></span>
                       <% end %>
                     </div>
