@@ -1,0 +1,378 @@
+.edit {
+  background: #626262 !important;
+}
+.form-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.form-edit .form input[type="submit"] {
+  display: block;
+  margin: 0 auto;
+  
+}
+
+.form {
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0 10px 10px 0;
+  padding: 16px;
+}
+
+.form header {
+  font-size: 34px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.form input[type="text"] {
+  margin: 20px 0 20px;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.form input[type="submit"] {
+  color: white;
+  background: #626262;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form input[type="submit"]:hover {
+  background-color: #2F2F2F;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+
+ */
+  /* Insert your CSS here */
+
+/* Стили для кнопочек */
+@import url('https://fonts.googleapis.com/css2?family=Sarala:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Sarala',
+  sans-serif;
+}
+.wrapper {
+  position: absolute;
+  max-width: 450px;
+  left: 1100px;
+  width: 70%;
+  padding: 20px
+  30px
+  120px;
+  background: #1F1F1F;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/*Login and Registration*/
+.form.login {
+  position: absolute;
+  left: 50%;
+  bottom: -86%;
+  transform: translateX(
+          -50%
+  );
+  width: calc(
+          100% +
+          220px
+  );
+  padding: 20px
+  140px;
+  border-radius: 50%;
+  height: 100%;
+  background: #1F1F1F;
+  transition: all
+  0.6s
+  ease;
+}
+.wrapper.active
+.form.login {
+  bottom: -15%;
+  border-radius: 35%;
+  box-shadow: 0 -5px
+  10px;
+}
+.form
+header {
+  font-size: 30px;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.form.login
+header {
+  color: #fff;
+  opacity: 0.6;
+}
+.wrapper.active
+.form.login
+header {
+  opacity: 1;
+}
+.wrapper.active
+.signup
+header {
+  opacity: 0.6;
+}
+.wrapper
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+.form
+input {
+  height: 60px;
+  outline: none;
+  border: none;
+  padding: 0
+  15px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  border-radius: 8px;
+  background-color: #333;
+}
+.form.registration input[type="submit"] {
+  background: linear-gradient(rgba(211, 19, 113, 1), rgba(252, 136, 12, 1), rgba(196, 167, 0, 1));
+}
+.form.login
+input {
+  border: 1px
+  solid
+  #aaa;
+}
+.form.login
+input:focus {
+  box-shadow: 0
+  2px 0
+  #FC880C;
+}
+form
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.checkbox
+input[type="checkbox"] {
+  height: 16px;
+  width: 16px;
+  accent-color: #fff;
+  cursor: pointer;
+}
+form
+.checkbox
+label {
+  cursor: pointer;
+  color: #fff;
+}
+form a {
+  color: #fff;
+  text-decoration: none;
+}
+form
+a:hover {
+  text-decoration: underline;
+}
+form
+input[type="submit"] {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.form.login
+input[type="submit"] {
+  background: linear-gradient(rgba(211, 19, 113, 1), rgba(252, 136, 12, 1), rgba(196, 167, 0, 1));
+  color: #fff;
+  border: none;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+
+ */
+/* Import Google font - Poppins */
+/* @import url('https://fonts.googleapis.com/css2?family=Sarala:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Sarala',
+  sans-serif;
+}
+.wrapper {
+  position: absolute;
+  max-width: 450px;
+  left: 1100px;
+  width: 70%;
+  padding: 20px
+  30px
+  120px;
+  background: #1F1F1F;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/*Login and Registration*/
+.form.login {
+  position: absolute;
+  left: 50%;
+  bottom: -86%;
+  transform: translateX(
+          -50%
+  );
+  width: calc(
+          100% +
+          220px
+  );
+  padding: 20px
+  140px;
+  border-radius: 50%;
+  height: 100%;
+  background: #1F1F1F;
+  transition: all
+  0.6s
+  ease;
+}
+.wrapper.active
+.form.login {
+  bottom: -15%;
+  border-radius: 35%;
+  box-shadow: 0 -5px
+  10px;
+}
+.form
+header {
+  font-size: 30px;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.form.login
+header {
+  color: #fff;
+  opacity: 0.6;
+}
+.wrapper.active
+.form.login
+header {
+  opacity: 1;
+}
+.wrapper.active
+.signup
+header {
+  opacity: 0.6;
+}
+.wrapper
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+.form
+input {
+  height: 60px;
+  outline: none;
+  border: none;
+  padding: 0
+  15px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  border-radius: 8px;
+  background-color: #333;
+}
+.form.registration input[type="submit"] {
+  background: linear-gradient(rgba(211, 19, 113, 1), rgba(252, 136, 12, 1), rgba(196, 167, 0, 1));
+}
+.form.login
+input {
+  border: 1px
+  solid
+  #aaa;
+}
+.form.login
+input:focus {
+  box-shadow: 0
+  2px 0
+  #FC880C;
+}
+form
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.checkbox
+input[type="checkbox"] {
+  height: 16px;
+  width: 16px;
+  accent-color: #fff;
+  cursor: pointer;
+}
+form
+.checkbox
+label {
+  cursor: pointer;
+  color: #fff;
+}
+form a {
+  color: #fff;
+  text-decoration: none;
+}
+form
+a:hover {
+  text-decoration: underline;
+}
+form
+input[type="submit"] {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.form.login
+input[type="submit"] {
+  background: linear-gradient(rgba(211, 19, 113, 1), rgba(252, 136, 12, 1), rgba(196, 167, 0, 1));
+  color: #fff;
+  border: none;
+}
