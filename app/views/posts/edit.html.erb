@@ -3,41 +3,70 @@
   <head>
     <meta charset="UTF-8">
      <style>
-      #notice {
-        display: none; 
-        position: fixed;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 9999;
-        width: 300px;
-        padding: 10px;
-        background-color: #fff;
-        box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
-        border: 1px solid #ccc;
-      }
+        body.edit {
+          background: #626262 !important;
+        }
+        #notice {
+          display: none; 
+          position: fixed;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 9999;
+          width: 300px;
+          padding: 10px;
+          background-color: #fff;
+          box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+          border: 1px solid #ccc;
+        }
 
-      #notice.show {
-        display: block; 
-        animation: fade 1s ease-out forwards;
-      }
-      .form input[type="submit"] {
+        #notice.show {
+          display: block; 
+          animation: fade 1s ease-out forwards;
+        }
+        .form input[type="submit"] {
           color: white;
           background: #626262;
-          border-radius: 4px;
-          padding: 8px 16px;
-          font-size: 16px;
-          font-weight: bold;
           border: 1px solid white;
-      }
-      .form {
-        border: 1px solid #3E3E3E;
-        border-radius: 5px;
-        overflow: hidden;
-        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-        margin: 0 10px 10px 0;
-        padding: 16px;
-      }
+          font-weight: bold;
+          border-radius: 5px;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          font-size: 20px;
+          padding: 10px 20px;
+          transition: background-color 0.3s ease;
+          width: 80%;
+          max-width: 180px;
+          display: block;
+          margin: 0 auto;
+        }
+        .form {
+          max-width: 300px;
+          border: 1px solid #3E3E3E;
+          border-radius: 5px;
+          overflow: hidden;
+          box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+          margin: 0 10px 10px 0;
+          padding: 16px;
+          margin-left: 950px;
+          margin-top: 150px;
+        }
+        header {
+          font-size: 30px;
+          text-align: center;
+          color: #fff;
+          font-weight: 600;
+          cursor: pointer;
+        }
+        input#comment {
+          margin: 20px 0 20px;
+          border-radius: 4px;
+          width: 92%;
+          margin-bottom: 16px;
+          background-color: #333;
+          color: white;
+          padding: 10px;
+        }
+        
     </style>
     <script>
       const notice = document.querySelector('#notice');

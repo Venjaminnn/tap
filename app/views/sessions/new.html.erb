@@ -3,8 +3,15 @@
 <html lang="en">
   <head>
       <meta charset="UTF-8"/>    
-      <link rel="stylesheets" href="application.css"/>
       <style>
+        body {
+          background-image: url('https://res.cloudinary.com/hzodm3yak/image/upload/v1678994440/background_nwyodk.jpg');
+          background-position: center;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+         }
         #notice {
           display: none;
           position: fixed;
@@ -23,6 +30,143 @@
           display: block;
           animation: fade 1s ease-out forwards;
         }
+
+        .wrapper {
+          position: absolute;
+          max-width: 450px;
+          left: 1100px;
+          width: 70%;
+          padding: 20px
+          30px
+          120px;
+          background: #1F1F1F;
+          overflow: hidden;
+          border-radius: 10px;
+        }
+        .form.login {
+          position: absolute;
+          left: 50%;
+          bottom: -92%;
+          transform: translateX(
+                  -50%
+          );
+          width: calc(
+                  100% +
+                  220px
+          );
+          padding: 20px
+          140px;
+          border-radius: 50%;
+          height: 100%;
+          background: #1F1F1F;
+          transition: all
+          0.6s
+          ease;
+        }
+        .wrapper.active
+        .form.login {
+          bottom: -15%;
+          border-radius: 35%;
+          box-shadow: 0 -5px
+          10px;
+        }
+        .form
+        header {
+          font-size: 30px;
+          text-align: center;
+          color: #fff;
+          font-weight: 600;
+          cursor: pointer;
+        }
+        .form.login
+        header {
+          color: #fff;
+          opacity: 0.6;
+        }
+        .wrapper.active
+        .form.login
+        header {
+          opacity: 1;
+        }
+        .wrapper.active
+        .signup
+        header {
+          opacity: 0.6;
+        }
+        .wrapper
+        form {
+          display: flex;
+          flex-direction: column;
+          margin-top: 40px;
+        }
+        .form
+        input {
+          height: 60px;
+          outline: none;
+          border: none;
+          padding: 0
+          15px;
+          font-size: 16px;
+          font-weight: 400;
+          color: #fff;
+          border-radius: 8px;
+          background-color: #333;
+        }
+        .form.registration input[type="submit"] {
+          background: linear-gradient(rgba(211, 19, 113, 1), rgba(252, 136, 12, 1), rgba(196, 167, 0, 1));
+        }
+        .form.login
+        input {
+          border: 1px
+          solid
+          #aaa;
+        }
+        .form.login
+        input:focus {
+          box-shadow: 0
+          2px 0
+          #FC880C;
+        }
+        form
+        .checkbox {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .checkbox
+        input[type="checkbox"] {
+          height: 16px;
+          width: 16px;
+          accent-color: #fff;
+          cursor: pointer;
+        }
+        form
+        .checkbox
+        label {
+          cursor: pointer;
+          color: #fff;
+        }
+        form a {
+          color: #fff;
+          text-decoration: none;
+        }
+        form
+        a:hover {
+          text-decoration: underline;
+        }
+        form
+        input[type="submit"] {
+          margin-top: 15px;
+          font-size: 18px;
+          font-weight: 500;
+          cursor: pointer;
+        }
+        .form.login
+        input[type="submit"] {
+          background: linear-gradient(rgba(211, 19, 113, 1), rgba(252, 136, 12, 1), rgba(196, 167, 0, 1));
+          color: #fff;
+          border: none;
+        }
       </style>
   </head>
   
@@ -32,10 +176,10 @@
       <div class="form login">
         <header>Login</header>
         <%= form_with url: login_url do |f| %>
-          <%= f.text_field :email, placeholder: "Email" %><br>
-          <%= f.text_field :phone, placeholder: "Phone" %><br>
-          <%= f.password_field :password, placeholder: "Password" %><br>
-          <%= f.submit "Login"%>
+          <%= f.text_field :email, placeholder: "Email", style:"max-width: 450px; margin-left: 120px;" %><br>
+          <%= f.text_field :phone, placeholder: "Phone", style:"max-width: 450px; margin-left: 120px;" %><br>
+          <%= f.password_field :password, placeholder: "Password", style:"max-width: 450px; margin-left: 120px;" %><br>
+          <%= f.submit "Login", style:"max-width: 450px; margin-left: 140px;"%>
         <% end %>
       </div>
 

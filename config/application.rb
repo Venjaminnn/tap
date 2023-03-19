@@ -37,5 +37,12 @@ module Tap
     config.assets.digest = true
     config.assets.compile = true
     config.generators.system_tests = nil
+    config.serve_static_assets = true
+    config.serve_static_files = true
+
+
+    config.assets.paths << Rails.root.join('app', 'assets', 'javascripts')
+    config.assets.paths << Rails.root.join('app', 'assets', 'stylesheets')
+    config.assets.precompile += %w( *.js *.css )
   end
 end

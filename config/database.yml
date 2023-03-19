@@ -7,7 +7,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  url: <%= ENV.fetch('DATABASE_URL') %>
+  url: <%= ENV.fetch('DATABASE_URL', nil) %>
   username: <%= ENV.fetch('USER_NAME', 'postgres') %>
   password: <%= ENV.fetch('PASSWORD', 'postgres') %>
   host: <%= ENV.fetch('HOST', 'localhost') %>

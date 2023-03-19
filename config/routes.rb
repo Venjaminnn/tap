@@ -7,22 +7,27 @@ Rails.application.routes.draw do
 
   post '/sign_up', to: 'users#create'
   post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  get '/logout', to: 'sessions#destroy'
   get '/feed', to: 'feeds#index'
 
   resources :users, only: %i[show index]
   resources :posts, only: %i[new create update] do
     get :edit
-    resources :comments, only: %i[new create index destroy], controller: 'posts/comments'
+    resources :comments, only: %i[new], controller: 'posts/comments' do
+      get '/', on: :collection, to: 'posts/comments#index'
+      post 'create', on: :collection, as: :create
+      get 'destroy', as: :destroy, to: 'posts/comments#destroy'
+    end
     resources :likes, only: %i[], controller: 'posts/likes' do
-      post 'create', on: :collection
-      delete 'destroy', on: :collection, as: :destroy
+      get 'create', on: :collection, to: 'posts/likes#create'
+      get 'destroy', on: :collection, as: :destroy, to: 'posts/likes#destroy'
     end
   end
 
-  resources :follows, only: %i[create] do
+  resources :follows do
     collection do
-      delete '/:following_id', action: :destroy, as: :unfollow
+      get 'create', to: 'follows#create'
+      get '/:following_id', action: :destroy, as: :unfollow
     end
   end
 

@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   def self.search(search, current_user)
     if search
-      where('nickname LIKE ?', "%#{search}%").where.not(id: current_user.id)
+      where('nickname LIKE ?', "%#{search.downcase}%").where.not(id: current_user.id)
     else
       User.all.where.not(id: current_user.id)
     end

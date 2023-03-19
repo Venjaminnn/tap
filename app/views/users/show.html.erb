@@ -3,6 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8"/>
+    <link rel="stylesheets" href="application.css"/>
     <style>
       body {
         background-image: none !important;
@@ -60,6 +61,7 @@
       .edit-profile-container{
         border-radius: 5px;
         margin-bottom: 10px;
+        margin-left: 250px;
         padding: 10px;
         display: flex;
         align-items: center;
@@ -100,7 +102,6 @@
       }
     </style>
   </head>
-
     
   <body class="profile">
 
@@ -122,7 +123,7 @@
                 <li id="list" class="users"><%= user_follow.following.nickname %></li>
 
                 <%= link_to unfollow_follows_path(user_follow.following.id), data: {turbo_method: :delete } do %>
-                  <span class="unfollow"><%= image_tag 'unfollow.svg', width: '25px', height: '27px' %></span>
+                  <span class="unfollow"><%= image_tag 'https://res.cloudinary.com/hzodm3yak/image/upload/v1678982423/unfollow_rptslf.svg', width: '25px', height: '27px' %></span>
                 <% end %>
               <% end %>
             </div>

@@ -1,10 +1,255 @@
-<%= stylesheet_link_tag "index", media: "all" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheets" href="index.css"/>
      <style>
+     
+      .account {
+        width: 75px;
+        height: 75px;
+        min-width: 40px;
+        border-radius: 40%;
+        border: 2px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+      }
+      .account:hover{
+        background: #2e2f30;
+      }
+      .new-post {
+        width: 75px;
+        height: 75px;
+        min-width: 40px;
+        border-radius: 40%;
+        border: 2px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+      }
+      .new-post:hover{
+        background: #2e2f30;
+      }
+      .notifications {
+        width: 75px;
+        height: 75px;
+        min-width: 40px;
+        border-radius: 40%;
+        border: 2px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+      }
+      .notifications:hover{
+        background: #2e2f30;
+      }
+      .logout {
+        width: 75px;
+        height: 75px;
+        min-width: 40px;
+        border-radius: 40%;
+        border: 2px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+      }
+      .logout:hover{
+        background: #2e2f30;
+      }
+
+      .questions {
+        width: 75px;
+        height: 75px;
+        min-width: 40px;
+        border-radius: 40%;
+        border: 2px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+      }
+      .questions:hover{
+        background: #2e2f30;
+      }
+      .index {
+        min-width: 100vw;
+        min-height: 100vh;
+        width: 100vm;
+        height: 100vh;
+        background-color: #626262;
+        background-image: none !important;
+        display: flex;
+        overflow-x: hidden;
+        padding: 0px 40px;
+      }
+      .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: px;
+        height: 100%;
+        padding: 20px;
+      }
+
+      .menuContainer {
+        border-radius: 40%;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin: 50px 0;
+      }
+      main {
+        flex: 1;
+        height: 100%;
+        padding-top: 35px;
+        margin-left: 130px;
+      }
+      .searchBox {
+        margin-left: 10px;
+        display: absolute;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        background: #2F2F2F;
+        padding: 8px 15px;
+        box-shadow: 0px 0px 13px 2px rgba(11, 11, 11, 0.25);
+        border: 1px solid #525252;
+        border-radius: 25px;
+      }
+      .search input {
+        width: 595px; 
+        height: 50px;
+        outline: none;
+        border: none;
+        color: white;
+        font-weight: bold;
+        border-radius: 25px;
+        background: #2F2F2F;
+      }
+      input[name] {
+        font-family: 'Sarala';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 29px;
+        letter-spacing: 0.105em;
+        color: #FFFFFF;
+        padding: 15px;
+      }
+      li#list.post{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+        margin-top: 70px;
+      }
+      #list {
+        width: 100%;
+        overflow: hidden;
+        -webkit-column-count: 3;
+        -webkit-column-gap: 1.875em;
+        -webkit-column-fill: auto;
+        -moz-column-count: 3;
+        -moz-column-gap: 1.875em;
+        -moz-column-fill: auto;
+        column-count: 3;
+        column-gap: 1.875em;
+        column-fill: auto;
+      }
+
+      .post-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+        margin-top: 30px;
+        margin-right: 100px;
+      }
+
+      .post {
+        border: 1px solid #3E3E3E;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+        float: left;
+        transition: transform 0.2s ease-out;
+        margin: 0 10px 10px 0;
+      }
+
+      .post:hover {
+        transform: translateY(-10px);
+      }
+
+      .post-image {
+        position: relative;
+        cursor: -webkit-zoom-in;
+        cursor: -moz-zoom-in;
+      }
+
+      .post-image:before {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+
+      .post-image img {
+        max-width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .post-comment {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: none;
+        color: white;
+        font-size: 28px;
+        padding: 10px;
+      }
+
+      .post-actions {
+        background-color: transparent;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        font-size: 0.8em;  
+        transform: translateY(75px);
+        transition: transform 0.2s ease-out;
+      }
+
+      .post:hover .post-actions {
+        display: flex;
+        transform: translateY(0);
+      }
+
+      .post-image:target::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .body {
+        background: #626262;
+      }
       #notice {
         display: none; 
         position: fixed;
@@ -62,7 +307,7 @@
       <div class="menu">
 
         <div>
-          <td class="logo"><%= image_tag 'logo.svg', width:'145px', height:'145px'%></td>
+          <td class="logo"><%= image_tag('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982420/logo_vy7isg.svg', width:'145px', height:'145px')%></td>
         </div>
         
         <div style="margin: 30px">
@@ -72,15 +317,15 @@
             <tr>
             
               <div class="menuContainer">
-                <div class="account" style="margin: 15px 0"><td><%= link_to (image_tag('person.svg')), user_path(@current_user) %></td></div>
-                <div class="notifications" style="margin: 15px 0"><td><%= link_to (image_tag('notifications.svg')) %></td></div>
-                <div class="new-post" style="margin: 15px 0"><td><%= link_to (image_tag('add.svg')), new_post_path, method: :get %></td></div>
+                <div class="account" style="margin: 15px 0"><td><%= link_to (image_tag('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982421/person_pl8ytb.svg')), user_path(@current_user) %></td></div>
+                <div class="notifications" style="margin: 15px 0"><td><%= link_to (image_tag ('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982420/notifications_lg4g2z.svg')) %></td></div>
+                <div class="new-post" style="margin: 15px 0"><td><%= link_to (image_tag ('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982418/add_btzygi.svg')), new_post_path, method: :get %></td></div>
               </div>
 
-              <div class="questions" style="margin: 15px 0"><td><%= link_to (image_tag('questions.svg')) %></td></div>
+              <div class="questions" style="margin: 15px 0"><td><%= link_to (image_tag('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982422/questions_exwzsj.svg')) %></td></div>
 
               <div class="logout">
-                <td><%= link_to (image_tag('logout.svg')), logout_path, data: {turbo_method: :delete} %></td>
+                <td><%= link_to (image_tag asset_path('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982420/logout_pjb0fx.svg')), logout_path %></td>
               </div>
 
             </tr>
@@ -106,30 +351,30 @@
           <% @feed_posts.each do |feed_post| %>
             <li id="list" class="post">
               <div class="post-image">
-                <%= link_to image_tag(feed_post.image.url, style: 'margin-bottom: 7px, height: 7em') %>
+                <%= link_to cl_image_tag(feed_post.image.url, width: 300, height: 200, crop: :scale, style: 'margin-bottom: 7px, height: 7em') %>
                  <p class="post-comment"><%= feed_post.comment %></p>
               </div>
             
             
               <div class="post-actions">
                 <%= link_to post_edit_path(feed_post) do %>
-                   <%= image_tag 'edit_icon.svg', width: '44px', height: '42px'%> 
+                   <%= image_tag 'https://res.cloudinary.com/dx1gxrz2q/image/upload/v1679150397/edit_u4hglm.svg', width: '44px', height: '42px'%> 
                  <% end %> 
               
               <div class="likes">
                 <span class="likes-count"><%= "#{feed_post.likes_count} #{'like'.pluralize(feed_post.likes_count)}" %></span>
 
                 <% if feed_post.liked_by?(@current_user) %>
-                  <%= link_to destroy_post_likes_path(feed_post.id), data: {turbo_method: :delete }, class: "like-button" do %>
-                    <%= image_tag 'like.svg', width: '44px', height: '42px' %>
+                  <%= link_to destroy_post_likes_path(feed_post.id), class: "like-button" do %>
+                    <%= image_tag 'https://res.cloudinary.com/hzodm3yak/image/upload/v1678982420/like_qfc6jk.svg', width: '44px', height: '42px' %>
                   <% end %>
                 <% else %>
-                  <%= link_to post_likes_path(feed_post.id), data: {turbo_method: :post }, class: "like-button active" do %>
-                    <%= image_tag 'unlike.svg', width: '44px', height: '42px' %>
+                  <%= link_to post_likes_path(feed_post.id), class: "like-button active" do %>
+                    <%= image_tag 'https://res.cloudinary.com/hzodm3yak/image/upload/v1678982422/unlike_wkmers.svg', width: '44px', height: '42px' %>
                   <% end %>
                 <% end %>
               </div>
-                 <%= link_to (image_tag 'comment_icon.svg', width: '44px', height: '42px'), post_comments_path(feed_post.id), method: :get %> 
+                 <%= link_to (image_tag 'https://res.cloudinary.com/hzodm3yak/image/upload/v1678982418/comment_icon_xim1ky.svg', width: '44px', height: '42px'), post_comments_path(feed_post.id), method: :get %> 
               </div> 
             </li>
           <% end %>
