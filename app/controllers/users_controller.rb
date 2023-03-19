@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   private
 
   def registration_params
-    params.permit(:phone, :password, :email).merge(nickname: nickname_normalize)
+    params.permit(:phone, :password, :email).merge(nickname_normalize)
   end
 
   def nickname_normalize
