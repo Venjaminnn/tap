@@ -24,9 +24,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :follows, only: %i[create] do
+  resources :follows do
     collection do
-      delete '/:following_id', action: :destroy, as: :unfollow
+      get 'create', to: 'follows#create'
+      get '/:following_id', action: :destroy, as: :unfollow
     end
   end
 
