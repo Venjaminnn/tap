@@ -5,173 +5,172 @@
     <meta charset="UTF-8"/>
     <link rel="stylesheets" href="new.css"/>
      <style>
-      @import url('https://fonts.googleapis.com/css2?family=Sarala:wght@400;700&display=swap');
      
-      body {
-        background-image: none !important;
-        background-color: #626262 !important;
-      }
+        body {
+          background-image: none !important;
+          background-color: #626262 !important;
+        }
 
-      .comments-section {
-        position: relative;
-        width: 800px;
-        float: left;
-        background-color: #626262;
-        padding: 20px;
-        border: 1px solid #3E3E3E;
-        border-radius: 5px;
-        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-        margin: 30px 20px;
-      }
+        .comments-section {
+          position: relative;
+          width: 800px;
+          float: left;
+          background-color: #626262;
+          padding: 20px;
+          border: 1px solid #3E3E3E;
+          border-radius: 5px;
+          box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+          margin: 30px 20px;
+        }
 
-      .comments-section header {
-        color: white;
-        justify-content: center;
-        display: flex;
-        font-size: 38px;
-        margin-top: 0;
-        font-weight: bold;
-      }
+        .comments-section header {
+          color: white;
+          justify-content: center;
+          display: flex;
+          font-size: 38px;
+          margin-top: 0;
+          font-weight: bold;
+        }
 
-      .add-comment-section header {
-        color: white;
-        justify-content: center;
-        display: flex;
-        font-size: 28px;
-        margin-top: 0;
-        font-weight: bold;
-      }
+        .add-comment-section header {
+          color: white;
+          justify-content: center;
+          display: flex;
+          font-size: 28px;
+          margin-top: 0;
+          font-weight: bold;
+        }
 
-      .comments-list {
-        margin-bottom: 10px;
-      }
-      .comment {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
+        .comments-list {
+          margin-bottom: 10px;
+        }
+        .comment {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
 
-      .add-comment-section {
-        position: fixed;
-        top: 65%;
-        right: 20px;
-        width: 300px;
-        display: block !important;
-        background-color: #626262;
-        border: 1px solid #3E3E3E;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-        max-width: 800px;
-      }
+        .add-comment-section {
+          position: fixed;
+          top: 65%;
+          right: 20px;
+          width: 300px;
+          display: block !important;
+          background-color: #626262;
+          border: 1px solid #3E3E3E;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+          max-width: 800px;
+        }
 
-      .form-field {
-        margin-bottom: 10px;
-      }
+        .form-field {
+          margin-bottom: 10px;
+        }
 
-      .form-add {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-      .form-add .form input[type="submit"] {
-        display: block;
-        margin: 0 auto;
-      }
- 
-      .form header {
-        font-size: 34px;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 16px;
-      }
+        .form-add {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+        .form-add .form input[type="submit"] {
+          display: block;
+          margin: 0 auto;
+        }
+  
+        .form header {
+          font-size: 34px;
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 16px;
+        }
 
-      form input[type="text"] {
-      
-        margin: 20px 0 20px;
-        border-radius: 4px;
-        width: 100%;
-        margin-bottom: 16px;
-      }
-      form input[type="submit"] {
-        color: white;
-        background: #626262;
-        border: 1px solid white;
-        border-radius: 4px;
-        padding: 8px 16px;
-        font-size: 16px;
-        font-weight: bold;
+        form input[type="text"] {
+        
+          margin: 20px 0 20px;
+          border-radius: 4px;
+          width: 100%;
+          margin-bottom: 16px;
+        }
+        form input[type="submit"] {
+          color: white;
+          background: #626262;
+          border: 1px solid white;
+          border-radius: 4px;
+          padding: 8px 16px;
+          font-size: 16px;
+          font-weight: bold;
 
-      }
-      form input[type="submit"]:hover {
-        background-color: #2F2F2F;
-      }
-      input[name]  {
-        color: black;
-      }
-      .comments {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
+        }
+        form input[type="submit"]:hover {
+          background-color: #2F2F2F;
+        }
+        input[name]  {
+          color: black;
+        }
+        .comments {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
 
-      .comments.list {
-        margin-top: 30px;
-      }
+        .comments.list {
+          margin-top: 30px;
+        }
 
-      .comments.list li {
-        background-color: #333;
-        color: #fff;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        padding: 10px;
-        width: 80%;
-        max-width: 600px;
-      }
+        .comments.list li {
+          background-color: #333;
+          color: #fff;
+          border-radius: 5px;
+          margin-bottom: 10px;
+          padding: 10px;
+          width: 80%;
+          max-width: 600px;
+        }
 
-      .comments form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 30px;
-      }
+        .comments form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 30px;
+        }
 
-      .comments form input[type="text"] {
-        background-color: #333;
-        color: white;
-        border-radius: 4px;
-        margin-bottom: 10px;
-        padding: 10px;
-        width: 80%;
-        max-width: 600px;
-      }
+        .comments form input[type="text"] {
+          background-color: #333;
+          color: white;
+          border-radius: 4px;
+          margin-bottom: 10px;
+          padding: 10px;
+          width: 80%;
+          max-width: 600px;
+        }
 
-      .comments form input[type="submit"] {
-        background-color: #626262;
-        border-radius: 5px;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        color: #fff;
-        cursor: pointer;
-        font-size: 20px;
-        font-weight: bold;
-        padding: 10px 20px;
-        transition: background-color 0.3s ease;
-        width: 80%;
-        max-width: 600px;
-      }
+        .comments form input[type="submit"] {
+          background-color: #626262;
+          border-radius: 5px;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          color: #fff;
+          cursor: pointer;
+          font-size: 20px;
+          font-weight: bold;
+          padding: 10px 20px;
+          transition: background-color 0.3s ease;
+          width: 80%;
+          max-width: 600px;
+        }
 
-      .comments form input[type="submit"]:hover {
-        background-color: #2F2F2F;
-      }
-      .delete-button {
-        margin-left: 10px;
-      }
-      #list {
-        margin-top: 50px;
-        margin-bottom: 50px;
-      }
+        .comments form input[type="submit"]:hover {
+          background-color: #2F2F2F;
+        }
+        .delete-button {
+          margin-left: 10px;
+        }
+        #list {
+          margin-top: 50px;
+          margin-bottom: 50px;
+        }
     </style>
   </head>
 
