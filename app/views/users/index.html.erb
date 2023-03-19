@@ -76,7 +76,7 @@
               <% @users.each do |user| %>
                 <li id="list" class="users"><%= user.nickname %></li>
 
-                <%= link_to follows_path(following_id: user.id, search: params[:search]), data: {turbo_method: :post } do %>
+                <%= link_to follows_path(following_id: user.id, search: params[:search]), method: :post, data: {turbo_method: :post } do %>
                   <span class="follow"><%= image_tag 'https://res.cloudinary.com/hzodm3yak/image/upload/v1678982418/follow_r9bdxc.svg', width: '25px', height: '27px' %></span>
                 <% end %>
               <% end %>
