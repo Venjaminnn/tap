@@ -13,7 +13,7 @@
           justify-content: center;
          }
         #notice {
-          display: none;
+          display: none; 
           position: fixed;
           top: 0;
           left: 50%;
@@ -31,7 +31,7 @@
           animation: fade 1s ease-out forwards;
         }
 
-        .wrapper {
+        .wrapperr {
           position: absolute;
           max-width: 450px;
           left: 1100px;
@@ -63,7 +63,7 @@
           0.6s
           ease;
         }
-        .wrapper.active
+        .wrapperr.active
         .form.login {
           bottom: -15%;
           border-radius: 35%;
@@ -81,19 +81,19 @@
         .form.login
         header {
           color: #fff;
-          opacity: 0.6;
+          /* opacity: 0.6; */
         }
-        .wrapper.active
+        .wrapperr.active
         .form.login
         header {
-          opacity: 1;
+          /* opacity: 1; */
         }
-        .wrapper.active
+        .wrapperr.active
         .signup
         header {
-          opacity: 0.6;
+          /* opacity: 0.6; */
         }
-        .wrapper
+        .wrapperr
         form {
           display: flex;
           flex-direction: column;
@@ -171,8 +171,9 @@
   </head>
   
   <body>
-    <section class="wrapper">
-      <p id="notice"><%= flash[:notice] %></p>
+    <p id="notice"><%= flash[:notice] %></p>
+
+    <section class="wrapperr">
       <div class="form login">
         <header>Login</header>
         <%= form_with url: login_url do |f| %>
@@ -196,18 +197,17 @@
       </div>
 
       <script>
-          const wrapper = document.querySelector(".wrapper"),
+          const myWrapper = document.querySelector(".wrapperr"),
               loginHeader = document.querySelector(".login header"),
               registrationHeader = document.querySelector(".registration header");
 
           loginHeader.addEventListener("click", () => {
-              wrapper.classList.add("active");
+              myWrapper.classList.add("active");
           })
           registrationHeader.addEventListener("click", () => {
-              wrapper.classList.remove("active");
+              myWrapper.classList.remove("active");
           })
       </script>
-      </header>
     </section>
   </body>
 </html>

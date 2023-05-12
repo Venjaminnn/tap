@@ -11,8 +11,10 @@ class SessionsController < ApplicationController
       if user.present?
         session[:user_id] = user.id
         format.html { redirect_to(feed_url, notice: 'User is successfully logged') }
+        format.json { render json: 'User is successfully logged' }
       else
         format.html { redirect_to(root_path, notice: 'Registration unsuccessfully') }
+        format.json { render json: 'Wrong email/phone or password' }
       end
     end
   end
@@ -25,8 +27,10 @@ class SessionsController < ApplicationController
         @current_user = nil
 
         format.html { redirect_to(root_path, notice: 'User is successfully logged out') }
+        format.json { render json: 'User is successfully logged out' }
       else
         format.html { redirect_to(root_path, notice: 'User was not logged before') }
+        format.json { render json: 'User was not logged before' }
       end
     end
   end

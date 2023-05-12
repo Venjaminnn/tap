@@ -14,11 +14,11 @@ Rails.application.routes.draw do
   resources :posts, only: %i[new create update] do
     get :edit
     resources :comments, only: %i[new], controller: 'posts/comments' do
+      get '/destroy', to: 'posts/comments#destroy'
       get '/', on: :collection, to: 'posts/comments#index'
       post 'create', on: :collection, as: :create
-      get 'destroy', as: :destroy, to: 'posts/comments#destroy'
     end
-    resources :likes, only: %i[], controller: 'posts/likes' do
+    resources :likes, only: %i[index], controller: 'posts/likes' do
       get 'create', on: :collection, to: 'posts/likes#create'
       get 'destroy', on: :collection, as: :destroy, to: 'posts/likes#destroy'
     end
@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
     resources :comments, only: :destroy
     resources :posts, only: %i[create update] do
+      get :edit
       resources :comments, only: %i[create index], controller: 'posts/comments'
       resources :likes, only: %i[create index], controller: 'posts/likes' do
         delete 'destroy', on: :collection

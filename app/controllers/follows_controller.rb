@@ -9,8 +9,10 @@ class FollowsController < ApplicationController
     respond_to do |format|
       if follow.save
         format.html { redirect_to(user_path(@current_user.id), notice: 'Successfully followed') }
+        format.json { render json: follow }
       else
         format.html { redirect_to(users_path(search: params[:search]), notice: "Can not create follow: #{follow.errors.messages}" ) }
+        format.json { render json: follow.errors }
       end
     end
   end
@@ -22,8 +24,10 @@ class FollowsController < ApplicationController
       if follow
         follow.destroy
         format.html { redirect_to(user_path(@current_user.id), notice: 'Successfully unfollowed') }
+        format.json { render json: 'Successfully unfollowed' }
       else
         format.html { redirect_to(user_path(@current_user.id), notice: 'Can not find follow') }
+        format.json { render json: 'Error: Can not find follow' }
       end
     end
   end
