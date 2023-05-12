@@ -10,6 +10,7 @@ class FeedsController < ApplicationController
     respond_to do |format|
       if @feed_posts
         format.html { render template: 'feed/index' }
+        format.json { render json: @feed_posts }
       else
         format.html { redirect_to(sign_up_url, notice: "Login unsuccessfully: #{user.errors.messages}") }
       end

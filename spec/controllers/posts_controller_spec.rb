@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Api::PostsController, type: :controller do
+RSpec.describe PostsController, type: :controller do
   let(:user) { create(:user) }
   describe 'POST #create' do
     context 'when successfully creating post' do
@@ -21,13 +21,29 @@ RSpec.describe Api::PostsController, type: :controller do
         post :create, params: params
       end
 
-      it 'create post from current user' do
+      it 'create post from current user for JSON format' do
+        post :create, format: :json, params: params
+
         expect(JSON.parse(response.body).symbolize_keys).to include(comment: 'my new post',
                                                                     user_id: user.id,
                                                                     likes_count: 0)
       end
 
-      it 'create post from current user and attach image' do
+      it 'create post from current user for HTML format' do
+        post :create, format: :html, params: params
+
+        expect(response).to be_truthy
+      end
+
+      it 'create post from current user and attach image for JSON format' do
+        post :create, format: :json
+        
+        expect(Post.last.image).to be_present
+      end
+
+      it 'create post from current user and attach image for HTML format' do
+        post :create, format: :html
+
         expect(Post.last.image).to be_present
       end
     end
@@ -45,8 +61,16 @@ RSpec.describe Api::PostsController, type: :controller do
         }
       end
 
-      it 'create post from current user and attach image' do
+      it 'create post from current user and attach image for JSON format' do
+        post :create, format: :json
+
         expect(JSON.parse(response.body).symbolize_keys).to eq(image: ['can\'t be blank'])
+      end
+
+      it 'create post from current user and attach image for HTML format' do
+        post :create, format: :html
+
+        expect(response).to be_truthy
       end
     end
 
@@ -57,10 +81,16 @@ RSpec.describe Api::PostsController, type: :controller do
         }
       end
 
-      it 'did not login user' do
-        post :create, params: params
+      it 'did not login user for JSON format' do
+        post :create, params: params, format: :json
 
         expect(response.body).to eq('User is not logged')
+      end
+
+      it 'did not login user for HTML format' do
+        post :create, params: params, format: :html
+
+        expect(response).to be_truthy
       end
     end
   end
@@ -81,8 +111,16 @@ RSpec.describe Api::PostsController, type: :controller do
         patch :update, params: { id: post.id, comment: 'updated comment' }
       end
 
-      it 'update post from current user' do
+      it 'update post from current user for JSON format' do
+        patch :update, format: :json, params: { id: post.id, comment: 'updated comment' }
+
         expect(JSON.parse(response.body).symbolize_keys).to include(comment: 'updated comment')
+      end
+
+      it 'update post from current user for HTML format' do
+        patch :update, format: :html, params: { id: post.id, comment: 'updated comment' }
+
+        expect(response).to be_truthy
       end
     end
 
@@ -101,8 +139,16 @@ RSpec.describe Api::PostsController, type: :controller do
         patch :update, params: { id: post.id, comment: 'updated comment' }
       end
 
-      it 'create post from current user' do
+      it 'create post from current user for JSON format' do
+        patch :update, format: :json, params: { id: post.id, comment: 'updated comment' }
+
         expect(response.body).to eq('Can\'t find this post for user')
+      end
+
+      it 'create post from current user for HTML format' do
+        patch :update, format: :html, params: { id: post.id, comment: 'updated comment' }
+
+        expect(response).to be_truthy
       end
     end
 
@@ -114,10 +160,16 @@ RSpec.describe Api::PostsController, type: :controller do
         }
       end
 
-      it 'did not login user' do
-        patch :update, params: { id: post.id, comment: 'updated comment' }
+      it 'did not login user for JSON format' do
+        patch :update, format: :json, params: { id: post.id, comment: 'updated comment' }
 
         expect(response.body).to eq('User is not logged')
+      end
+
+      it 'did not login user for HTML format' do
+        patch :update, format: :html, params: { id: post.id, comment: 'updated comment' }
+
+        expect(response).to be_truthy
       end
     end
   end

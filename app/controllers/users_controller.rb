@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if user.valid?
         format.html { redirect_to(root_path, notice: 'Successfully registered - login now') }
+        format.json { render json: user }
       else
         format.html { redirect_to(root_path, notice: "Registration unsuccessfully: #{user.errors.messages}") }
       end

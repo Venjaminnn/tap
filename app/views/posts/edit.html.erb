@@ -47,8 +47,12 @@
           box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
           margin: 0 10px 10px 0;
           padding: 16px;
-          margin-left: 950px;
-          margin-top: 150px;
+          margin: auto;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          display: block;
         }
         header {
           font-size: 30px;
@@ -66,7 +70,112 @@
           color: white;
           padding: 10px;
         }
-        
+        .account {
+          width: 75px;
+          height: 75px;
+          min-width: 40px;
+          border-radius: 40%;
+          border: 2px solid white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+        }
+        .account:hover{
+          background: #2e2f30;
+        }
+        .home {
+          width: 75px;
+          height: 75px;
+          min-width: 40px;
+          border-radius: 40%;
+          border: 2px solid white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+        }
+        .home:hover{
+          background: #2e2f30;
+        }
+        .new-post {
+          width: 75px;
+          height: 75px;
+          min-width: 40px;
+          border-radius: 40%;
+          border: 2px solid white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+        }
+        .new-post:hover{
+          background: #2e2f30;
+        }
+        .notifications {
+          width: 75px;
+          height: 75px;
+          min-width: 40px;
+          border-radius: 40%;
+          border: 2px solid white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+        }
+        .notifications:hover{
+          background: #2e2f30;
+        }
+        .logout {
+          width: 75px;
+          height: 75px;
+          min-width: 40px;
+          border-radius: 40%;
+          border: 2px solid white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+        }
+        .logout:hover{
+          background: #2e2f30;
+        }
+
+        .questions {
+          width: 75px;
+          height: 75px;
+          min-width: 40px;
+          border-radius: 40%;
+          border: 2px solid white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+        }
+        .questions:hover{
+          background: #2e2f30;
+        }
+        .menu {
+          position: fixed;
+          top: -20px;
+          left: 0;
+          height: 100%;
+          padding: 20px;
+        }
+
+        .menuContainer {
+          border-radius: 40%;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          margin: 50px 0;
+        }
     </style>
     <script>
       const notice = document.querySelector('#notice');
@@ -79,6 +188,29 @@
   </head>
   
     <body class="edit">
+
+      <div class="menu">
+
+        <div style="margin: 30px">
+
+          <tr>
+            <div class="menuContainer">
+              <div class="home" style="margin: 15px 0"><td><%= link_to (image_tag('https://res.cloudinary.com/dx1gxrz2q/image/upload/v1683035485/home_mdmcd7.svg')), feed_path%></td></div>
+              <div class="account" style="margin: 15px 0"><td><%= link_to (image_tag('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982421/person_pl8ytb.svg')), user_path(@current_user) %></td></div>
+              <div class="notifications" style="margin: 15px 0"><td><%= link_to (image_tag ('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982420/notifications_lg4g2z.svg')) %></td></div>
+              <div class="new-post" style="margin: 15px 0"><td><%= link_to (image_tag ('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982418/add_btzygi.svg')), new_post_path, method: :get %></td></div>
+            </div>
+
+            <div class="questions" style="margin: 15px 0"><td><%= link_to (image_tag('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982422/questions_exwzsj.svg')) %></td></div>
+
+            <div class="logout">
+              <td><%= link_to (image_tag asset_path('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982420/logout_pjb0fx.svg')), logout_path %></td>
+            </div>
+
+          </tr>
+        </div>
+      </div>
+
     <section class="form-edit">
       <p id="notice"><%= flash[:notice] %></p>
         <div class="editing form">

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8"/>
      <style>
-     
+
       .account {
         width: 75px;
         height: 75px;
@@ -17,6 +17,21 @@
         box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
       }
       .account:hover{
+        background: #2e2f30;
+      }
+      .home {
+        width: 75px;
+        height: 75px;
+        min-width: 40px;
+        border-radius: 40%;
+        border: 2px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+      }
+      .home:hover{
         background: #2e2f30;
       }
       .new-post {
@@ -93,9 +108,8 @@
       }
       .menu {
         position: fixed;
-        top: 0;
+        top: -20px;
         left: 0;
-        width: px;
         height: 100%;
         padding: 20px;
       }
@@ -114,26 +128,24 @@
         margin-left: 130px;
       }
       .searchBox {
-        margin-left: 10px;
+        margin-left: 20px;
         display: absolute;
         align-items: center;
         justify-content: center;
-        width: 100%;
+        width: 90%;
         background: #2F2F2F;
-        padding: 8px 15px;
         box-shadow: 0px 0px 13px 2px rgba(11, 11, 11, 0.25);
         border: 1px solid #525252;
         border-radius: 25px;
       }
       .search input {
-        width: 595px; 
-        height: 50px;
+        width: 90%;
         outline: none;
         border: none;
         color: white;
         font-weight: bold;
         border-radius: 25px;
-        background: #2F2F2F;
+        background: none;
       }
       input[name] {
         font-family: 'Sarala';
@@ -148,10 +160,8 @@
       li#list.post{
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
-        margin-top: 70px;
       }
       #list {
-        width: 100%;
         overflow: hidden;
         -webkit-column-count: 3;
         -webkit-column-gap: 1.875em;
@@ -301,14 +311,16 @@
     </script>
   </head>
   
-  <body>
+  <body style="
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-bottom-width: 0px;
+    margin-bottom: 0px;
+    ">
     <div class="index">
 
       <div class="menu">
-
-        <div>
-          <td class="logo"><%= image_tag('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982420/logo_vy7isg.svg', width:'145px', height:'145px')%></td>
-        </div>
         
         <div style="margin: 30px">
 
@@ -317,6 +329,7 @@
             <tr>
             
               <div class="menuContainer">
+                <div class="home" style="margin: 15px 0"><td><%= link_to (image_tag('https://res.cloudinary.com/dx1gxrz2q/image/upload/v1683035485/home_mdmcd7.svg')), feed_path%></td></div>
                 <div class="account" style="margin: 15px 0"><td><%= link_to (image_tag('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982421/person_pl8ytb.svg')), user_path(@current_user) %></td></div>
                 <div class="notifications" style="margin: 15px 0"><td><%= link_to (image_tag ('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982420/notifications_lg4g2z.svg')) %></td></div>
                 <div class="new-post" style="margin: 15px 0"><td><%= link_to (image_tag ('https://res.cloudinary.com/hzodm3yak/image/upload/v1678982418/add_btzygi.svg')), new_post_path, method: :get %></td></div>
@@ -351,16 +364,17 @@
           <% @feed_posts.each do |feed_post| %>
             <li id="list" class="post">
               <div class="post-image">
-                <%= link_to cl_image_tag(feed_post.image.url, width: 300, height: 200, crop: :scale, style: 'margin-bottom: 7px, height: 7em') %>
+                <%= link_to image_tag(feed_post.image.url, width: 300, height: 200, crop: :scale, style: 'margin-bottom: 7px, height: 7em') %>
                  <p class="post-comment"><%= feed_post.comment %></p>
               </div>
             
-            
               <div class="post-actions">
-                <%= link_to post_edit_path(feed_post) do %>
-                   <%= image_tag 'https://res.cloudinary.com/dx1gxrz2q/image/upload/v1679150397/edit_u4hglm.svg', width: '44px', height: '42px'%> 
-                 <% end %> 
-              
+                <% if feed_post.user == @current_user %>
+                  <%= link_to post_edit_path(feed_post), class: "edit-button" do %>
+                    <%= image_tag 'https://res.cloudinary.com/dx1gxrz2q/image/upload/v1679150397/edit_u4hglm.svg', width: '44px', height: '42px'%> 
+                  <% end %> 
+               <% end %>
+
               <div class="likes">
                 <span class="likes-count"><%= "#{feed_post.likes_count} #{'like'.pluralize(feed_post.likes_count)}" %></span>
 

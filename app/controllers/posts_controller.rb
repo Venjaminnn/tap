@@ -9,10 +9,12 @@ class PostsController < ApplicationController
     post = Post.create(post_params)
 
     respond_to do |format|
-      if post
+      if post.save
         format.html { redirect_to(feed_url, notice: 'Post successfully created') }
+        format.json { render json: post }
       else
         format.html { redirect_to(feed_url, notice: "Something went wrong: #{post.errors.messages}") }
+        format.json { render json: post.errors }
       end
     end
   end
@@ -31,8 +33,10 @@ class PostsController < ApplicationController
         post.update(update_params)
 
         format.html { redirect_to(feed_url, notice: 'Post successfully updated') }
+        format.json { render json: post }
       else
-        format.html { redirect_to(post_edit_path, notice: "Cant find this post user: #{post.errors.messages}") }
+        format.html { redirect_to(post_edit_path(:post_id), notice: 'Cant find this post user') }
+        format.json { render json: 'Can\'t find this post for user' }
       end
     end
   end
